@@ -19,9 +19,25 @@
 #include "sdkconfig.h"
 
 /*--- Some defines															---*/
-#define SDA_PIN 21						// I2c SDA pin on Lolin32
-#define SCL_PIN 22						// I2c SCL pin on Lolin32
-#define BLINK_GPIO CONFIG_BLINK_GPIO	// Builtin Led on Lolin32, pin 5
+#define LOLIN_32                 /* Update to LOLIN_32_LITE or LOLIN_32 depending your ESP32 dev. board */
+
+#ifdef X_ESP32
+    #define PIN_SDA 15
+    #define PIN_CLK 14
+    #define BLINK_GPIO  GPIO_NUM_13
+#endif
+
+#ifdef LOLIN_32_LITE
+    #define PIN_SDA 23
+    #define PIN_CLK 19
+    #define BLINK_GPIO  CONFIG_BLINK_GPIO
+#endif
+
+#ifdef LOLIN_32
+    #define PIN_SDA 21
+    #define PIN_CLK 22
+    #define BLINK_GPIO  CONFIG_BLINK_GIO
+#endif
 
 /*******************************************************************************
  * void task_i2cScanner (void *)							
@@ -46,8 +62,8 @@ void task_i2cscanner(void *ignore)
 
 	/*--- I2C bus configuration											  ---*/
 	conf.mode = I2C_MODE_MASTER;
-	conf.sda_io_num = SDA_PIN;
-	conf.scl_io_num = SCL_PIN;
+	conf.sda_io_num = PIN_SDA;
+	conf.scl_io_num = PIN_SCL;
 	conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
 	conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
 	conf.master.clk_speed = 100000;
@@ -116,20 +132,30 @@ void blink_task(void *pvParameter)
        functions.)
     */
     ESP_LOGD(tagb, ">> blink_task\n");
-    gpio_pad_select_gpio(BLINK_GPIO);
-	
-    /* Set the GPIO as a push/pull output */
-    gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
-    
+	gpio_config_t io_conf;
+    //disable interrupt
+    io_conf.intr_type = (gpio_int_type_t)GPIO_PIN_INTR_DISABLE;
+    //set as output mode
+    io_conf.mode = GPIO_MODE_OUTPUT;
+    //bit mask of the pins that you want to set
+    io_conf.pin_bit_mask = (1ULL<<BLINK_GPIO);
+    //disable pull-down mode
+    io_conf.pull_down_en = (gpio_pulldown_t)0;
+    //disable pull-up mode
+    io_conf.pull_up_en = (gpio_pullup_t)0;
+    //configure GPIO with the given settings
+    gpio_config(&io_conf);
+	   
 	while(1) 
 	{
+
         /* Blink off (output low) */
-        gpio_set_level(BLINK_GPIO, 0);
+        gpio_set_level((gpio_num_t)BLINK_GPIO, 0);
 		
         vTaskDelay(pdMS_TO_TICKS(1500));
 		
         /* Blink on (output high) */
-        gpio_set_level(BLINK_GPIO, 1);
+        gpio_set_level((gpio_num_t)BLINK_GPIO, 1);
 		
         vTaskDelay(pdMS_TO_TICKS(1500));
     }
