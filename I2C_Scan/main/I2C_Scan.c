@@ -30,13 +30,13 @@
 #ifdef LOLIN_32_LITE
     #define PIN_SDA 23
     #define PIN_CLK 19
-    #define BLINK_GPIO  CONFIG_BLINK_GPIO
+    #define BLINK_GPIO  GPIO_NUM_22
 #endif
 
 #ifdef LOLIN_32
     #define PIN_SDA 21
     #define PIN_CLK 22
-    #define BLINK_GPIO  CONFIG_BLINK_GIO
+    #define BLINK_GPIO  GPIO_NUM_5
 #endif
 
 /*******************************************************************************
@@ -63,7 +63,7 @@ void task_i2cscanner(void *ignore)
 	/*--- I2C bus configuration											  ---*/
 	conf.mode = I2C_MODE_MASTER;
 	conf.sda_io_num = PIN_SDA;
-	conf.scl_io_num = PIN_SCL;
+	conf.scl_io_num = PIN_CLK;
 	conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
 	conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
 	conf.master.clk_speed = 100000;
