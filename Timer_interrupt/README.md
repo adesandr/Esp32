@@ -1,3 +1,3 @@
-# I2C_Scan
+# Timer_interrupt
 
-Starts two FreeRTOS tasks to scan the I2C Bus and blink a LED
+Simple interrupt timer example, based on esp-idf example.

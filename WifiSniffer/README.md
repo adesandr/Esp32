@@ -1,3 +1,3 @@
-# I2C_Scan
+# WifiSniffer
 
-Starts two FreeRTOS tasks to scan the I2C Bus and blink a LED
+Simple Wifi Sniffer using the promiscusous mode
