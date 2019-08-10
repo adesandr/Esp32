@@ -1,0 +1,127 @@
+{
+
+    "configurations": [
+
+        {
+
+            "name": "ESP32-Win",
+
+            "includePath": [
+
+                "${workspaceRoot}/**",
+                "${env:IDF_PATH}/components/bt/bluedroid/**",
+                "${env:IDF_PATH}/components/aws_iot/**",
+                "${env:IDF_PATH}/components/app_trace/**",
+                "${env:IDF_PATH}/components/app_update/**",
+                "${env:IDF_PATH}/components/xtensa-debug-module/**",
+                "${env:IDF_PATH}/components/bootloader_support/**",
+                "${env:IDF_PATH}/components/bt/**",
+                "${env:IDF_PATH}/components/coap/**",
+                "${env:IDF_PATH}/components/cxx/**",
+                "${env:IDF_PATH}/components/driver/**",
+                "${env:IDF_PATH}/components/esp32/**",
+                "${env:IDF_PATH}/components/ethernet/**",
+                "${env:IDF_PATH}/components/expat/**",
+                "${env:IDF_PATH}/components/fatfs/**",
+                "${env:IDF_PATH}/components/freertos/**",
+                "${env:IDF_PATH}/components/heap/**",
+                "${env:IDF_PATH}/components/jsmn/**",
+                "${env:IDF_PATH}/components/json/**",
+                "${env:IDF_PATH}/components/libsodium/libsodium/src/libsodium/**",
+                "${env:IDF_PATH}/components/log/**",
+                "${env:IDF_PATH}/components/lwip/**",
+                "${env:IDF_PATH}/components/mbedtls/**",
+                "${env:IDF_PATH}/components/mdns/**",
+                "${env:IDF_PATH}/components/micro-ecc/**",
+                "${env:IDF_PATH}/components/newlib/**",
+                "${env:IDF_PATH}/components/nghttp/**",
+                "${env:IDF_PATH}/components/nvs_flash/**",
+                "${env:IDF_PATH}/components/openssl/**",
+                "${env:IDF_PATH}/components/pthread/**",
+                "${env:IDF_PATH}/components/sdmmc/**",
+                "${env:IDF_PATH}/components/spi_flash/**",
+                "${env:IDF_PATH}/components/tcpip_adapter/**",
+                "${env:IDF_PATH}/components/soc/**",
+                "${env:IDF_PATH}/components/spiffs/**",
+                "${env:IDF_PATH}/components/ulp/**",
+                "${env:IDF_PATH}/components/vfs/**",
+                "${env:IDF_PATH}/components/wear_levelling/**",
+                "${env:IDF_PATH}/components/wpa_supplicant/**",
+                "C:/esp-idf/msys32/opt/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/5.2.0/include",
+                "C:/esp-idf/msys32/opt/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/5.2.0/include-fixed",
+                "C:/esp-idf/msys32/opt/xtensa-esp32-elf/xtensa-esp32-elf/include",
+                "C:/esp-idf/msys32/opt/xtensa-esp32-elf/xtensa-esp32-elf/sysroot/usr/include",
+                "C:/esp-idf/msys32/home/Eliot/esp/esp-idf/components"
+
+            ],
+
+            "intelliSenseMode": "clang-x64",
+
+            "browse": {
+
+                "path": [
+
+                    "${workspaceRoot}/**",
+                    "${env:IDF_PATH}/components/bt/bluedroid/**",
+                    "${env:IDF_PATH}/components/aws_iot/**",
+                    "${env:IDF_PATH}/components/app_trace/**",
+                    "${env:IDF_PATH}/components/app_update/**",
+                    "${env:IDF_PATH}/components/xtensa-debug-module/**",
+                    "${env:IDF_PATH}/components/bootloader_support/**",
+                    "${env:IDF_PATH}/components/bt/**",
+                    "${env:IDF_PATH}/components/coap/**",
+                    "${env:IDF_PATH}/components/cxx/**",
+                    "${env:IDF_PATH}/components/driver/**",
+                    "${env:IDF_PATH}/components/esp32/**",
+                    "${env:IDF_PATH}/components/ethernet/**",
+                    "${env:IDF_PATH}/components/expat/**",
+                    "${env:IDF_PATH}/components/fatfs/**",
+                    "${env:IDF_PATH}/components/freertos/**",
+                    "${env:IDF_PATH}/components/heap/**",
+                    "${env:IDF_PATH}/components/jsmn/**",
+                    "${env:IDF_PATH}/components/json/**",
+                    "${env:IDF_PATH}/components/libsodium/libsodium/src/libsodium/**",
+                    "${env:IDF_PATH}/components/log/**",
+                    "${env:IDF_PATH}/components/lwip/**",
+                    "${env:IDF_PATH}/components/mbedtls/**",
+                    "${env:IDF_PATH}/components/mdns/**",
+                    "${env:IDF_PATH}/components/micro-ecc/**",
+                    "${env:IDF_PATH}/components/newlib/**",
+                    "${env:IDF_PATH}/components/nghttp/**",
+                    "${env:IDF_PATH}/components/nvs_flash/**",
+                    "${env:IDF_PATH}/components/openssl/**",
+                    "${env:IDF_PATH}/components/pthread/**",
+                    "${env:IDF_PATH}/components/sdmmc/**",
+                    "${env:IDF_PATH}/components/spi_flash/**",
+                    "${env:IDF_PATH}/components/tcpip_adapter/**",
+                    "${env:IDF_PATH}/components/soc/**",
+                    "${env:IDF_PATH}/components/spiffs/**",
+                    "${env:IDF_PATH}/components/ulp/**",
+                    "${env:IDF_PATH}/components/vfs/**",
+                    "${env:IDF_PATH}/components/wear_levelling/**",
+                    "${env:IDF_PATH}/components/wpa_supplicant/**",
+                    "C:/esp-idf/msys32/opt/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/5.2.0/include",
+                    "C:/esp-idf/msys32/opt/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/5.2.0/include-fixed",
+                    "C:/esp-idf/msys32/opt/xtensa-esp32-elf/xtensa-esp32-elf/include",
+                    "C:/esp-idf/msys32/opt/xtensa-esp32-elf/xtensa-esp32-elf/sysroot/usr/include",
+                    "C:/esp-idf/msys32/home/Eliot/esp/esp-idf/components"
+
+                ],
+
+                "limitSymbolsToIncludedHeaders": true,
+
+                "databaseFilename": "${workspaceRoot}/.vscode/browse.vc.db"
+
+            },
+
+            "cStandard": "c11",
+
+            "cppStandard": "c++17"
+
+        }
+
+    ],
+
+    "version": 4
+
+}
