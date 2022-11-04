@@ -1,3 +1,3 @@
 # WifiSniffer
 
-Simple Wifi Sniffer using the promiscusous mode
+Simple Wifi Sniffer using the promiscuous mode
