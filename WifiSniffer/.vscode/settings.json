@@ -3,5 +3,7 @@
     "files.associations": {
         "*.h": "c",
         "*.hpp": "c"
-    }
+    },
+    "idf.port": "/dev/ttyUSB1",
+    "idf.flashType": "UART"
 }

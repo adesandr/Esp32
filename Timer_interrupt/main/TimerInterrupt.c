@@ -16,6 +16,7 @@
 #include "soc/timer_group_struct.h"
 #include "driver/periph_ctrl.h"
 #include "driver/timer.h"
+#include "driver/gpio.h"
 
 #define TIMER_DIVIDER         16  		//  Hardware timer clock divider
 #define TIMER_SCALE           (TIMER_BASE_CLK / TIMER_DIVIDER)  // convert counter value to seconds
@@ -23,7 +24,7 @@
 #define TIMER_INTERVAL1_SEC   (1.78)   // sample test interval for the second timer
 #define TEST_WITHOUT_RELOAD   0        // testing will be done without auto reload
 #define TEST_WITH_RELOAD      1        // testing will be done with auto reload
-#define BLINK_GPIO            5        // builin led lolin32
+#define BLINK_GPIO            4        // builin led lolin32
 
 bool bEtatLed = 0;
 
@@ -181,16 +182,25 @@ static void timer_example_evt_task(void *arg)
  */
 void app_main()
 {
-    /* Configure the IOMUX register for pad BLINK_GPIO (some pads are
-       muxed to GPIO on reset already, but some default to other
-       functions and need to be switched to GPIO. Consult the
-       Technical Reference for a list of pads and their default
-       functions.)
-    */
-    gpio_pad_select_gpio(BLINK_GPIO);
-	
-    /* Set the GPIO as a push/pull output */
-    gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
+
+    /*---  Configure the IOMUX register for pad BLINK_GPIO (some pads are ---*/
+    /*---  muxed to GPIO on reset already, but some default to other      ---*/
+    /*---  functions and need to be switched to GPIO. Consult the         ---*/
+    /*---  Technical Reference for a list of pads and their default       ---*/
+    /*---  functions.). Blinky led.                                       ---*/
+    gpio_config_t io_conf;
+    //disable interrupt
+    io_conf.intr_type = (gpio_int_type_t)GPIO_PIN_INTR_DISABLE;
+    //set as output mode
+    io_conf.mode = GPIO_MODE_OUTPUT;
+    //bit mask of the pins that you want to set
+    io_conf.pin_bit_mask = (1ULL<<BLINK_GPIO);
+    //disable pull-down mode
+    io_conf.pull_down_en = (gpio_pulldown_t)0;
+    //disable pull-up mode
+    io_conf.pull_up_en = (gpio_pullup_t)0;
+    //configure GPIO with the given settings
+    gpio_config(&io_conf);
 
     /* Create queue, init timers and create main task */
     timer_queue = xQueueCreate(10, sizeof(timer_event_t));

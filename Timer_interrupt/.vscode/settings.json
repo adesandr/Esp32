@@ -3,5 +3,8 @@
     "files.associations": {
         "*.h": "c",
         "*.hpp": "c"
-    }
+    },
+    "idf.adapterTargetName": "esp32",
+    "idf.port": "/dev/ttyUSB1",
+    "idf.flashType": "UART"
 }
