@@ -66,12 +66,14 @@ void blink_task(void *pvParameter)
  */
 static void IRAM_ATTR uart_intr_handle(void *arg)
 {
-  uint16_t rx_fifo_len, status;
+  uint16_t rx_fifo_len, status, lg;
   uint16_t i=0;
   
   status = UART0.int_st.val; // read UART interrupt Status
   rx_fifo_len = UART0.status.rxfifo_cnt; // read number of bytes in UART buffer
   
+  lg = rx_fifo_len;
+
   while(rx_fifo_len){
    rxbuf[i++] = UART0.fifo.rw_byte; // read all bytes
    rx_fifo_len--;
@@ -82,7 +84,8 @@ static void IRAM_ATTR uart_intr_handle(void *arg)
 
 // a test code or debug code to indicate UART receives successfully,
 // you can redirect received byte as echo also
- uart_write_bytes(EX_UART_NUM, (const char*) "RX Done", 7);
+// uart_write_bytes(EX_UART_NUM, (const char*) "RX Done", 7);
+uart_write_bytes(EX_UART_NUM, (const char *) rxbuf, lg);
 
 }
 /*
@@ -90,8 +93,7 @@ static void IRAM_ATTR uart_intr_handle(void *arg)
  */
 void app_main()
 {
-	esp_log_level_set(TAG, ESP_LOG_INFO);
-
+	
 	/* Configure parameters of an UART driver,
 	* communication pins and install the driver */
 	uart_config_t uart_config = {
@@ -121,6 +123,7 @@ void app_main()
 
 	// enable RX interrupt
 	ESP_ERROR_CHECK(uart_enable_rx_intr(EX_UART_NUM));
+	
 	#if (NOTASK == 1)
 	while(1)
 	{
